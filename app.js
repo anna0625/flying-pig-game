@@ -196,7 +196,7 @@ function playGame() {
       playGameOver(pig);
     }
 
-    // Adjust the pig position
+    // Update the pig's position (moving forward)
     pig.style.top = player.y + "px";
     pig.style.left = player.x + "px";
 

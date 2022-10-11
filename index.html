@@ -21,7 +21,7 @@
     <style type="text/tailwindcss">
       .pig {
         position: absolute;
-        bottom: 100px;
+        bottom: 16rem;
         left: 50px;
         width: 50px;
         height: 40px;
@@ -50,7 +50,7 @@
     </style>
   </head>
   <body>
-    <div class="container mx-auto min-w-full">
+    <div class="container mx-auto min-w-full h-screen">
       <div
         class="bg-slate-700 text-white text-center h-16 text-lg font-mono flex items-center justify-between relative z-50"
       >
@@ -80,7 +80,10 @@
           id="gameMessage"
           class="hidden flex items-center justify-center text-center p-3 relative z-50 bg-white"
         ></span>
-        <div id="gameArea" class="bg-blue-300 mx-auto w-full h-screen"></div>
+        <div
+          id="gameArea"
+          class="bg-blue-300 mx-auto w-full min-h-screen"
+        ></div>
       </div>
     </div>
     <script src="app.js"></script>
