@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flying Pig</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {},
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      .pig {
+        position: absolute;
+        bottom: 100px;
+        left: 50px;
+        width: 50px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.5rem;
+        background-image: url(pig.png);
+        background-size: cover;
+      }
+      .tail {
+        position: absolute;
+        top: 16px;
+        left: -3px;
+        background-color: #ffb6b6;
+        width: 10px;
+        height: 5px;
+        border-radius: 5px;
+      }
+      .pipe {
+        width: 90px;
+        position: absolute;
+        text-align: center;
+      }
+      .z-index {
+        z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mx-auto min-w-full">
+      <div
+        id="score"
+        class="bg-slate-700 text-white text-center h-10 text-lg font-mono flex items-center justify-center relative z-50"
+      ></div>
+      <div id="game">
+        <div
+          id="startScreen"
+          class="absolute bg-pink-400 text-center left-1/4 top-44 text-white w-1/2 p-2 shadow-md cursor-pointer hover:scale-110 hover:bg-pink-700 z-50"
+        >
+          Press Start
+        </div>
+        <button
+          id="againButton"
+          class="hidden absolute p-3 flex items-center justify-center bg-blue-500 text-white left-1/4 top-44 w-1/2 shadow-md cursor-pointer hover:scale-110 hover:bg-blue-700 z-50"
+        >
+          start again
+        </button>
+        <span
+          id="gameMessage"
+          class="hidden flex items-center justify-center text-center p-3 relative z-50 bg-white"
+        ></span>
+        <div id="gameArea" class="bg-blue-300 mx-auto w-full h-screen"></div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
