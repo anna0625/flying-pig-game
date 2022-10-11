@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flying Pig</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -47,9 +52,17 @@
   <body>
     <div class="container mx-auto min-w-full">
       <div
-        id="score"
-        class="bg-slate-700 text-white text-center h-10 text-lg font-mono flex items-center justify-center relative z-50"
-      ></div>
+        class="bg-slate-700 text-white text-center h-16 text-lg font-mono flex items-center justify-between relative z-50"
+      >
+        <p id="score" class="mx-5"></p>
+        <select id="speed" class="mx-5 select">
+          <option disabled selected>What is the best speed for you?</option>
+          <option value="slow">Slow</option>
+          <option value="medium">Medium</option>
+          <option value="fast">Fast</option>
+          <option value="super">Super</option>
+        </select>
+      </div>
       <div id="game">
         <div
           id="startScreen"

@@ -3,6 +3,7 @@ const startScreen = document.getElementById("startScreen");
 const gameArea = document.getElementById("gameArea");
 const gameMessage = document.getElementById("gameMessage");
 const againButton = document.getElementById("againButton");
+const speed = document.getElementById("speed");
 
 startScreen.addEventListener("click", start);
 againButton.addEventListener("click", start);
@@ -12,10 +13,38 @@ document.addEventListener("keyup", pressOff);
 let keys = {};
 let player = {};
 
+let defaultSpeed = 2;
+selectCheck();
+
+function selectCheck() {
+  switch (speed.selectedIndex) {
+    case 1:
+      defaultSpeed = 2;
+      break;
+    case 2:
+      defaultSpeed = 3;
+      break;
+    case 3:
+      defaultSpeed = 4;
+      break;
+    case 4:
+      defaultSpeed = 6;
+      break;
+    default:
+      defaultSpeed = 2;
+      break;
+  }
+}
+
+speed.onclick = (e) => {
+  e.preventDefault();
+  selectCheck();
+};
+
 function start() {
   // console.log("start");
 
-  player.speed = 2;
+  player.speed = defaultSpeed;
   player.score = 0;
   player.inplay = true;
 
@@ -25,6 +54,7 @@ function start() {
   gameMessage.classList.add("hidden");
   startScreen.classList.add("hidden");
   againButton.classList.add("hidden");
+  speed.setAttribute("disabled", "");
 
   // Create pig and its moving tail
   let pig = document.createElement("div");
@@ -181,6 +211,7 @@ function playGameOver(pig) {
   againButton.classList.remove("hidden");
   pig.setAttribute("style", "transform: rotate(180deg)");
   gameMessage.innerHTML = "Game Over <br/> You scored " + player.score;
+  speed.removeAttribute("disabled");
 }
 
 function pressOn(e) {
