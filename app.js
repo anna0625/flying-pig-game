@@ -14,9 +14,10 @@ let keys = {};
 let player = {};
 
 let defaultSpeed = 2;
-selectCheck();
+// Check the default speed
+selectSpeedCheck();
 
-function selectCheck() {
+function selectSpeedCheck() {
   switch (speed.selectedIndex) {
     case 1:
       defaultSpeed = 2;
@@ -36,9 +37,10 @@ function selectCheck() {
   }
 }
 
+// Only can be selected before the game starts.
 speed.onclick = (e) => {
   e.preventDefault();
-  selectCheck();
+  selectSpeedCheck();
 };
 
 function start() {
