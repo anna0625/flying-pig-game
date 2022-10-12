@@ -1,5 +1,5 @@
 const score = document.getElementById("score");
-const game = document.getElementById("game");
+const body = document.getElementById("body");
 const startScreen = document.getElementById("startScreen");
 const gameArea = document.getElementById("gameArea");
 const gameMessage = document.getElementById("gameMessage");
@@ -23,14 +23,16 @@ let player = {};
 let highestScore = 0;
 
 // Mobile
-game.ontouchstart = (e) => {
+body.addEventListener("touchstart", (e) => {
+  e.preventDefault();
   e.stopPropagation();
   keys.ArrowUp = true;
-};
-game.ontouchend = (e) => {
+});
+body.addEventListener("touchend", (e) => {
+  e.preventDefault();
   e.stopPropagation();
   keys.ArrowUp = false;
-};
+});
 
 function start() {
   player.speed = defaultSpeed;
