@@ -24,9 +24,11 @@ let highestScore = 0;
 
 // Mobile
 document.ontouchstart = (e) => {
+  e.stopPropagation();
   keys.ArrowUp = true;
 };
 document.ontouchend = (e) => {
+  e.stopPropagation();
   keys.ArrowUp = false;
 };
 
