@@ -1,4 +1,5 @@
 const score = document.getElementById("score");
+const game = document.getElementById("game");
 const startScreen = document.getElementById("startScreen");
 const gameArea = document.getElementById("gameArea");
 const gameMessage = document.getElementById("gameMessage");
@@ -10,15 +11,25 @@ againButton.addEventListener("click", start);
 document.addEventListener("keydown", pressOn);
 document.addEventListener("keyup", pressOff);
 
-let keys = {};
-let player = {};
-let highestScore = 0;
-
-let defaultSpeed = speed.selectedIndex + 1;
+let defaultSpeed = speed.selectedIndex + 2;
 // Only can be selected before the game starts.
 speed.onclick = (e) => {
   e.preventDefault();
   defaultSpeed = speed.selectedIndex + 1;
+};
+
+let keys = {};
+let player = {};
+let highestScore = 0;
+
+// Mobile
+game.ontouchstart = (e) => {
+  e.preventDefault();
+  keys.ArrowUp = true;
+};
+game.ontouchend = (e) => {
+  e.preventDefault();
+  keys.ArrowUp = false;
 };
 
 function start() {
