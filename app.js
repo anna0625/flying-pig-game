@@ -23,16 +23,16 @@ let player = {};
 let highestScore = 0;
 
 // Mobile
-body.addEventListener("touchstart", (e) => {
+body.ontouchstart = (e) => {
   e.preventDefault();
   e.stopPropagation();
   keys.ArrowUp = true;
-});
-body.addEventListener("touchend", (e) => {
+};
+body.ontouchend = (e) => {
   e.preventDefault();
   e.stopPropagation();
   keys.ArrowUp = false;
-});
+};
 
 function start() {
   player.speed = defaultSpeed;
