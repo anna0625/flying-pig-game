@@ -23,12 +23,10 @@ let player = {};
 let highestScore = 0;
 
 // Mobile
-game.ontouchstart = (e) => {
-  e.preventDefault();
+document.ontouchstart = (e) => {
   keys.ArrowUp = true;
 };
-game.ontouchend = (e) => {
-  e.preventDefault();
+document.ontouchend = (e) => {
   keys.ArrowUp = false;
 };
 
