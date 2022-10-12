@@ -50,12 +50,12 @@
     </style>
   </head>
   <body>
-    <div class="container mx-auto min-w-full h-screen">
+    <div class="container mx-auto min-w-full fixed">
       <div
         class="bg-slate-700 text-white text-center h-16 text-lg font-mono flex items-center justify-between relative z-50"
       >
         <p id="score" class="mx-5"></p>
-        <select id="speed" class="mx-5 select">
+        <select id="speed" class="mx-5 select w-36 md:w-fit">
           <option disabled selected>What is the best speed for you?</option>
           <option value="slow">Slow</option>
           <option value="medium">Medium</option>
@@ -80,10 +80,7 @@
           id="gameMessage"
           class="hidden flex items-center justify-center text-center p-3 relative z-50 bg-white"
         ></span>
-        <div
-          id="gameArea"
-          class="bg-blue-300 mx-auto w-full min-h-screen"
-        ></div>
+        <div id="gameArea" class="bg-blue-300 mx-auto w-full h-screen"></div>
       </div>
     </div>
     <script src="app.js"></script>
