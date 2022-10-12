@@ -12,40 +12,16 @@ document.addEventListener("keyup", pressOff);
 
 let keys = {};
 let player = {};
+let highestScore = 0;
 
-let defaultSpeed = 2;
-// Check the default speed
-selectSpeedCheck();
-
-function selectSpeedCheck() {
-  switch (speed.selectedIndex) {
-    case 1:
-      defaultSpeed = 2;
-      break;
-    case 2:
-      defaultSpeed = 3;
-      break;
-    case 3:
-      defaultSpeed = 4;
-      break;
-    case 4:
-      defaultSpeed = 6;
-      break;
-    default:
-      defaultSpeed = 2;
-      break;
-  }
-}
-
+let defaultSpeed = speed.selectedIndex + 1;
 // Only can be selected before the game starts.
 speed.onclick = (e) => {
   e.preventDefault();
-  selectSpeedCheck();
+  defaultSpeed = speed.selectedIndex + 1;
 };
 
 function start() {
-  // console.log("start");
-
   player.speed = defaultSpeed;
   player.score = 0;
   player.inplay = true;
@@ -92,7 +68,7 @@ function buildObstacles(startPosition) {
   let pipeTop = document.createElement("div");
   pipeTop.start = startPosition + totalScreenWidth;
   pipeTop.classList.add("pipe");
-  pipeTop.innerHTML = "<br/>" + player.pipe;
+  // pipeTop.innerHTML = "<br/>" + player.pipe;
   pipeTop.height = Math.floor(Math.random() * 350);
   pipeTop.style.height = pipeTop.height + "px";
   pipeTop.style.left = pipeTop.start + "px";
@@ -101,11 +77,11 @@ function buildObstacles(startPosition) {
   pipeTop.id = player.pipe;
   pipeTop.classList.add("bg-purple-200");
   gameArea.appendChild(pipeTop);
-  let pipeSpace = Math.floor(Math.random() * 250) + 150;
+  let pipeSpace = Math.floor(Math.random() * 250) + 190;
   let pipeBottom = document.createElement("div");
   pipeBottom.start = pipeTop.start;
   pipeBottom.classList.add("pipe");
-  pipeBottom.innerHTML = "<br/>" + player.pipe;
+  // pipeBottom.innerHTML = "<br/>" + player.pipe;
   pipeBottom.style.height =
     totalScreenHeight - pipeTop.height - pipeSpace + "px";
   pipeBottom.style.left = pipeTop.start + "px";
@@ -212,7 +188,12 @@ function playGameOver(pig) {
   gameMessage.classList.remove("hidden");
   againButton.classList.remove("hidden");
   pig.setAttribute("style", "transform: rotate(180deg)");
-  gameMessage.innerHTML = "Game Over <br/> You scored " + player.score;
+  if (highestScore < player.score) highestScore = player.score;
+  gameMessage.innerHTML =
+    "Game Over <br/> Score : " +
+    player.score +
+    "<br/> Highest Score : " +
+    highestScore;
   speed.removeAttribute("disabled");
 }
 
