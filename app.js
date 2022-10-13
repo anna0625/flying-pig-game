@@ -11,24 +11,6 @@ againButton.addEventListener("click", start);
 document.addEventListener("keydown", pressOn);
 document.addEventListener("keyup", pressOff);
 
-let keys = {};
-let player = {};
-let highestScore = 0;
-
-// Mobile
-game.ontouchstart = (e) => {
-  // e.stopPropagation();
-  keys.ArrowUp = true;
-};
-game.ontouchend = (e) => {
-  // e.stopPropagation();
-  keys.ArrowUp = false;
-};
-// document.ontouchmove = (e) => {
-//   e.stopPropagation();
-//   keys.ArrowUp = false;
-// };
-
 const speedList = {
   1: "super slow",
   2: "slow",
@@ -36,12 +18,30 @@ const speedList = {
   4: "fast",
   5: "super",
 };
-let defaultSpeed = 3;
+let defaultSpeed = speed.selectedIndex + 3;
 // Only can be selected before the game starts.
 speed.onclick = (e) => {
   e.preventDefault();
   defaultSpeed = speed.selectedIndex + 1;
 };
+
+let keys = {};
+let player = {};
+let highestScore = 0;
+
+// Mobile
+game.ontouchstart = (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = true;
+};
+game.ontouchend = (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = false;
+};
+// document.ontouchmove = (e) => {
+//   e.stopPropagation();
+//   keys.ArrowUp = false;
+// };
 
 function start() {
   player.speed = defaultSpeed;
