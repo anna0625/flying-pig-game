@@ -5,6 +5,15 @@ const gameArea = document.getElementById("gameArea");
 const gameMessage = document.getElementById("gameMessage");
 const againButton = document.getElementById("againButton");
 
+startScreen.addEventListener("click", start);
+againButton.addEventListener("click", start);
+document.addEventListener("keydown", pressOn);
+document.addEventListener("keyup", pressOff);
+
+let keys = {};
+let player = {};
+let highestScore = 0;
+
 const speedList = {
   1: "super slow",
   2: "slow",
@@ -18,15 +27,6 @@ speed.onclick = (e) => {
   e.preventDefault();
   defaultSpeed = speed.selectedIndex + 1;
 };
-
-startScreen.addEventListener("click", start);
-againButton.addEventListener("click", start);
-document.addEventListener("keydown", pressOn);
-document.addEventListener("keyup", pressOff);
-
-let keys = {};
-let player = {};
-let highestScore = 0;
 
 // Mobile
 document.ontouchstart = (e) => {
