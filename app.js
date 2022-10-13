@@ -29,15 +29,15 @@ speed.onclick = (e) => {
 };
 
 // Mobile
-gameArea.ontouchstart = (e) => {
+document.ontouchstart = (e) => {
   e.stopPropagation();
   keys.ArrowUp = true;
 };
-gameArea.ontouchend = (e) => {
+document.ontouchend = (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 };
-gameArea.ontouchmove = (e) => {
+document.ontouchmove = (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 };
