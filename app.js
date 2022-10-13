@@ -5,20 +5,6 @@ const gameMessage = document.getElementById("gameMessage");
 const againButton = document.getElementById("againButton");
 const speed = document.getElementById("speed");
 
-const speedList = {
-  1: "super slow",
-  2: "slow",
-  3: "medium",
-  4: "fast",
-  5: "super",
-};
-let defaultSpeed = speed.selectedIndex + 1;
-// Only can be selected before the game starts.
-speed.onclick = (e) => {
-  e.preventDefault();
-  defaultSpeed = speed.selectedIndex + 1;
-};
-
 startScreen.addEventListener("click", start);
 againButton.addEventListener("click", start);
 document.addEventListener("keydown", pressOn);
@@ -42,7 +28,27 @@ document.ontouchmove = (e) => {
   keys.ArrowUp = false;
 };
 
+const speedList = {
+  1: "super slow",
+  2: "slow",
+  3: "medium",
+  4: "fast",
+  5: "super",
+};
+let defaultSpeed = speed.selectedIndex + 1;
+// Only can be selected before the game starts.
+speed.onclick = (e) => {
+  e.preventDefault();
+  defaultSpeed = speed.selectedIndex + 1;
+};
+
 function start() {
+  // Only can be selected before the game starts.
+  speed.onclick = (e) => {
+    e.preventDefault();
+    defaultSpeed = speed.selectedIndex + 1;
+  };
+
   player.speed = defaultSpeed;
   player.score = 0;
   player.inplay = true;
