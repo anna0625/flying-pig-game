@@ -43,6 +43,7 @@ speed.onclick = (e) => {
 };
 
 function start() {
+  player.speed = defaultSpeed;
   player.score = 0;
   player.inplay = true;
 
