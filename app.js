@@ -31,11 +31,11 @@ speed.onclick = (e) => {
 
 // Mobile
 game.ontouchstart = (e) => {
-  e.stopPropagation();
+  // e.stopPropagation();
   keys.ArrowUp = true;
 };
 game.ontouchend = (e) => {
-  e.stopPropagation();
+  // e.stopPropagation();
   keys.ArrowUp = false;
 };
 // document.ontouchmove = (e) => {
