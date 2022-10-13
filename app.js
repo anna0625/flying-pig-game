@@ -23,6 +23,10 @@ document.ontouchend = (e) => {
 //   keys.ArrowUp = false;
 // };
 
+let keys = {};
+let player = {};
+let highestScore = 0;
+
 const speedList = {
   1: "super slow",
   2: "slow",
@@ -35,14 +39,10 @@ let defaultSpeed = 3;
 speed.onclick = (e) => {
   e.preventDefault();
   defaultSpeed = speed.selectedIndex + 1;
+  player.speed = defaultSpeed;
 };
 
-let keys = {};
-let player = {};
-let highestScore = 0;
-
 function start() {
-  player.speed = defaultSpeed;
   player.score = 0;
   player.inplay = true;
 
