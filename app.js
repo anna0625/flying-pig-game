@@ -31,14 +31,10 @@ let highestScore = 0;
 document.ontouchstart = (e) => {
   e.stopPropagation();
   keys.ArrowUp = true;
-  const pig = document.querySelector(".pig");
-  pig.classList.add("scale-150");
 };
 document.ontouchend = (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
-  const pig = document.querySelector(".pig");
-  pig.classList.remove("scale-150");
 };
 
 function start() {
@@ -188,6 +184,9 @@ function playGame() {
       // adjust the tail positoion
       tail.pos = tail.pos == 16 ? 10 : 16;
       tail.style.top = tail.pos + "px";
+      pig.classList.add("scale-150");
+    } else {
+      pig.classList.remove("scale-150");
     }
 
     // Gravity
@@ -218,15 +217,11 @@ function playGameOver(pig) {
 function pressOn(e) {
   e.preventDefault();
   keys[e.code] = true;
-  const pig = document.querySelector(".pig");
-  pig.classList.add("scale-150");
   // console.log(keys);
 }
 
 function pressOff(e) {
   e.preventDefault();
   keys[e.code] = false;
-  const pig = document.querySelector(".pig");
-  pig.classList.remove("scale-150");
   // console.log(keys);
 }
