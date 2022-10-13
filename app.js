@@ -30,11 +30,19 @@ let player = {};
 let highestScore = 0;
 
 // Mobile
-addEventListener("ontouchstart", (e) => {
+document.addEventListener("touchstart", (e) => {
   e.stopPropagation();
   keys.ArrowUp = true;
 });
-addEventListener("ontouchend", (e) => {
+document.addEventListener("touchend", (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = false;
+});
+document.addEventListener("touchcancel", (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = false;
+});
+document.addEventListener("touchmove", (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 });
