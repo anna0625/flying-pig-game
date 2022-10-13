@@ -38,14 +38,6 @@ addEventListener("ontouchend", (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 });
-addEventListener("ontouchcancel", (e) => {
-  e.stopPropagation();
-  keys.ArrowUp = false;
-});
-addEventListener("ontouchmove", (e) => {
-  e.stopPropagation();
-  keys.ArrowUp = false;
-});
 
 function start() {
   player.speed = defaultSpeed;
