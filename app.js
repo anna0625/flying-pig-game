@@ -29,11 +29,11 @@ let highestScore = 0;
 
 // Mobile
 document.ontouchstart = (e) => {
-  e.stopPropagation();
+  // e.stopPropagation();
   keys.ArrowUp = true;
 };
 document.ontouchend = (e) => {
-  e.stopPropagation();
+  // e.stopPropagation();
   keys.ArrowUp = false;
 };
 document.ontouchmove = (e) => {
