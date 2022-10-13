@@ -1,5 +1,4 @@
 const score = document.getElementById("score");
-const game = document.getElementById("game");
 const startScreen = document.getElementById("startScreen");
 const gameArea = document.getElementById("gameArea");
 const gameMessage = document.getElementById("gameMessage");
@@ -29,13 +28,13 @@ let player = {};
 let highestScore = 0;
 
 // Mobile
-game.ontouchstart = (e) => {
+document.ontouchstart = (e) => {
   e.stopPropagation();
   keys.ArrowUp = true;
   const pig = document.querySelector(".pig");
   pig.classList.add("scale-150");
 };
-game.ontouchend = (e) => {
+document.ontouchend = (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
   const pig = document.querySelector(".pig");
