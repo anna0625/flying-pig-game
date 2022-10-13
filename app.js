@@ -6,12 +6,13 @@ const againButton = document.getElementById("againButton");
 const speed = document.getElementById("speed");
 
 const speedList = {
+  1: "super slow",
   2: "slow",
   3: "medium",
   4: "fast",
   5: "super",
 };
-var defaultSpeed = 3;
+let defaultSpeed = 3;
 // Only can be selected before the game starts.
 speed.onclick = (e) => {
   e.preventDefault();
