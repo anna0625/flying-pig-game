@@ -11,11 +11,13 @@ const speedList = {
   4: "fast",
   5: "super",
 };
-let defaultSpeed = speed.selectedIndex + 2;
+let defaultSpeed = 3;
+console.log(defaultSpeed);
 // Only can be selected before the game starts.
 speed.onclick = (e) => {
   e.preventDefault();
   defaultSpeed = speed.selectedIndex + 1;
+  console.log(defaultSpeed);
 };
 
 startScreen.addEventListener("click", start);
