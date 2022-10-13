@@ -59,19 +59,59 @@
       }
     </style>
   </head>
+
+  <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box relative">
+      <label
+        for="my-modal-3"
+        class="btn btn-sm btn-circle absolute right-2 top-2"
+        >✕</label
+      >
+      <h3 class="text-lg font-bold">Instruction</h3>
+      <p class="py-4">
+        Desktop : <br />
+        use UP and SPACE buttons to jump up. <br />
+        use RIGHT button to move forward faster.<br />
+        use LEFT button to lower speed. <br />
+        use DOWN button to jump down.
+      </p>
+      <p class="py-4">
+        Mobile : <br />
+        touch screen to jump up.
+      </p>
+    </div>
+  </div>
   <body id="body">
     <div class="container mx-auto min-w-full fixed">
       <div
         class="bg-slate-700 text-white text-center h-16 text-lg font-mono flex items-center justify-between relative z-50"
       >
-        <p id="score" class="mx-5"></p>
-        <select id="speed" class="mx-5 select w-36 md:w-fit bg-slate-600">
-          <option disabled selected>What is the best speed for you?</option>
+        <p id="score" class="mx-3 text-left flex-1"></p>
+        <select id="speed" class="mx-5 select w-30 md:w-fit bg-slate-600">
+          <option disabled selected>Speed</option>
           <option value="slow">Slow</option>
           <option value="medium">Medium</option>
           <option value="fast">Fast</option>
           <option value="super">Super</option>
         </select>
+
+        <label for="my-modal-3" class="btn bg-slate-600 border-0 mr-3"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+            />
+          </svg>
+        </label>
       </div>
       <div id="game">
         <div
