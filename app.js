@@ -18,10 +18,10 @@ document.ontouchend = (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 };
-document.ontouchmove = (e) => {
-  e.stopPropagation();
-  keys.ArrowUp = false;
-};
+// document.ontouchmove = (e) => {
+//   e.stopPropagation();
+//   keys.ArrowUp = false;
+// };
 
 let keys = {};
 let player = {};
