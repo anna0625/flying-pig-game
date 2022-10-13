@@ -86,7 +86,7 @@ function buildObstacles(startPosition) {
   pipeTop.style.top = "0px";
   pipeTop.x = pipeTop.start;
   pipeTop.id = player.pipe;
-  pipeTop.classList.add("bg-purple-200");
+  pipeTop.classList.add("bg-yellow-200");
   gameArea.appendChild(pipeTop);
   let pipeSpace = Math.floor(Math.random() * 250) + 190;
   let pipeBottom = document.createElement("div");
@@ -99,7 +99,7 @@ function buildObstacles(startPosition) {
   pipeBottom.style.bottom = "0px";
   pipeBottom.x = pipeTop.start;
   pipeBottom.id = player.pipe;
-  pipeBottom.classList.add("bg-green-200");
+  pipeBottom.classList.add("bg-lime-100");
   gameArea.appendChild(pipeBottom);
 }
 
@@ -149,6 +149,11 @@ function playGame() {
     let pig = document.querySelector(".pig");
     let tail = document.querySelector(".tail");
 
+    // Gain scores
+    player.score++;
+    score.innerText = "Score: " + player.score;
+
+    // Remove obstacles and Check isCollide
     moveObstacles(pig);
 
     let isPigMove = false;
@@ -188,9 +193,6 @@ function playGame() {
     pig.style.left = player.x + "px";
 
     window.requestAnimationFrame(playGame);
-
-    player.score++;
-    score.innerText = "Score: " + player.score;
   }
 }
 
