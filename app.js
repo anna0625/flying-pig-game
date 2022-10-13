@@ -32,10 +32,14 @@ let highestScore = 0;
 game.ontouchstart = (e) => {
   e.stopPropagation();
   keys.ArrowUp = true;
+  const pig = document.querySelector(".pig");
+  pig.classList.add("scale-150");
 };
 game.ontouchend = (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
+  const pig = document.querySelector(".pig");
+  pig.classList.remove("scale-150");
 };
 
 function start() {
