@@ -5,11 +5,6 @@ const gameMessage = document.getElementById("gameMessage");
 const againButton = document.getElementById("againButton");
 const speed = document.getElementById("speed");
 
-startScreen.addEventListener("click", start);
-againButton.addEventListener("click", start);
-document.addEventListener("keydown", pressOn);
-document.addEventListener("keyup", pressOff);
-
 const speedList = {
   2: "slow",
   3: "medium",
@@ -22,6 +17,11 @@ speed.onclick = (e) => {
   e.preventDefault();
   defaultSpeed = speed.selectedIndex + 1;
 };
+
+startScreen.addEventListener("click", start);
+againButton.addEventListener("click", start);
+document.addEventListener("keydown", pressOn);
+document.addEventListener("keyup", pressOff);
 
 let keys = {};
 let player = {};
