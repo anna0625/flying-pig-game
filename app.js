@@ -9,19 +9,6 @@ startScreen.addEventListener("click", start);
 againButton.addEventListener("click", start);
 document.addEventListener("keydown", pressOn);
 document.addEventListener("keyup", pressOff);
-// Mobile
-document.ontouchstart = (e) => {
-  e.stopPropagation();
-  keys.ArrowUp = true;
-};
-document.ontouchend = (e) => {
-  e.stopPropagation();
-  keys.ArrowUp = false;
-};
-// document.ontouchmove = (e) => {
-//   e.stopPropagation();
-//   keys.ArrowUp = false;
-// };
 
 let keys = {};
 let player = {};
@@ -39,8 +26,21 @@ let defaultSpeed = 3;
 speed.onclick = (e) => {
   e.preventDefault();
   defaultSpeed = speed.selectedIndex + 1;
-  player.speed = defaultSpeed;
 };
+
+// Mobile
+document.ontouchstart = (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = true;
+};
+document.ontouchend = (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = false;
+};
+// document.ontouchmove = (e) => {
+//   e.stopPropagation();
+//   keys.ArrowUp = false;
+// };
 
 function start() {
   player.speed = defaultSpeed;
@@ -215,7 +215,11 @@ function playGameOver(pig) {
   againButton.classList.remove("hidden");
   pig.setAttribute("style", "transform: rotate(180deg)");
   if (highestScore < player.score) highestScore = player.score;
-  gameMessage.innerHTML = `<p>Game Over</p> <p>Score: <strong>${player.score}</strong> with <strong>${speedList[defaultSpeed]}</strong> speed</p> <p>Highest Score: <strong>${highestScore}</strong></p>`;
+  gameMessage.innerHTML = `<p>Game Over</p> <p>Score: <strong>${
+    player.score
+  }</strong> with <strong>${
+    speedList[player.speed]
+  }</strong> speed</p> <p>Highest Score: <strong>${highestScore}</strong></p>`;
   speed.removeAttribute("disabled");
 }
 
