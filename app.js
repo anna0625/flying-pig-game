@@ -1,5 +1,6 @@
 const speed = document.getElementById("speed");
 const score = document.getElementById("score");
+const game = document.getElementById("game");
 const startScreen = document.getElementById("startScreen");
 const gameArea = document.getElementById("gameArea");
 const gameMessage = document.getElementById("gameMessage");
@@ -29,11 +30,11 @@ speed.onclick = (e) => {
 };
 
 // Mobile
-document.ontouchstart = (e) => {
+game.ontouchstart = (e) => {
   e.stopPropagation();
   keys.ArrowUp = true;
 };
-document.ontouchend = (e) => {
+game.ontouchend = (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 };
