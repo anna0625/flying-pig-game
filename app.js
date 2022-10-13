@@ -9,6 +9,19 @@ startScreen.addEventListener("click", start);
 againButton.addEventListener("click", start);
 document.addEventListener("keydown", pressOn);
 document.addEventListener("keyup", pressOff);
+// Mobile
+document.ontouchstart = (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = true;
+};
+document.ontouchend = (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = false;
+};
+document.ontouchmove = (e) => {
+  e.stopPropagation();
+  keys.ArrowUp = false;
+};
 
 let keys = {};
 let player = {};
@@ -26,20 +39,6 @@ let defaultSpeed = 3;
 speed.onclick = (e) => {
   e.preventDefault();
   defaultSpeed = speed.selectedIndex + 1;
-};
-
-// Mobile
-document.ontouchstart = (e) => {
-  e.stopPropagation();
-  keys.ArrowUp = true;
-};
-document.ontouchend = (e) => {
-  e.stopPropagation();
-  keys.ArrowUp = false;
-};
-document.ontouchmove = (e) => {
-  e.stopPropagation();
-  keys.ArrowUp = false;
 };
 
 function start() {
