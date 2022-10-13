@@ -11,7 +11,13 @@ againButton.addEventListener("click", start);
 document.addEventListener("keydown", pressOn);
 document.addEventListener("keyup", pressOff);
 
-let defaultSpeed = speed.selectedIndex + 2;
+const speedList = {
+  2: "slow",
+  3: "medium",
+  4: "fast",
+  5: "super",
+};
+let defaultSpeed = speed.selectedIndex + 3;
 // Only can be selected before the game starts.
 speed.onclick = (e) => {
   e.preventDefault();
@@ -202,22 +208,22 @@ function playGameOver(pig) {
   againButton.classList.remove("hidden");
   pig.setAttribute("style", "transform: rotate(180deg)");
   if (highestScore < player.score) highestScore = player.score;
-  gameMessage.innerHTML =
-    "Game Over <br/> Score : " +
-    player.score +
-    "<br/> Highest Score : " +
-    highestScore;
+  gameMessage.innerHTML = `<p>Game Over</p> <p>Score: <strong>${player.score}</strong> with <strong>${speedList[defaultSpeed]}</strong> speed</p> <p>Highest Score: <strong>${highestScore}</strong></p>`;
   speed.removeAttribute("disabled");
 }
 
 function pressOn(e) {
   e.preventDefault();
   keys[e.code] = true;
+  const pig = document.querySelector(".pig");
+  pig.classList.add("scale-150");
   // console.log(keys);
 }
 
 function pressOff(e) {
   e.preventDefault();
   keys[e.code] = false;
+  const pig = document.querySelector(".pig");
+  pig.classList.remove("scale-150");
   // console.log(keys);
 }

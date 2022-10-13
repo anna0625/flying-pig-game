@@ -30,6 +30,7 @@
         touch-action: none;
       }
       .pig {
+        @apply shadow-sm;
         position: absolute;
         bottom: 16rem;
         left: 50px;
@@ -41,6 +42,7 @@
         background-size: cover;
       }
       .tail {
+        @apply shadow-sm;
         position: absolute;
         top: 16px;
         left: -3px;
@@ -129,7 +131,7 @@
         </button>
         <span
           id="gameMessage"
-          class="hidden flex items-center justify-center text-center p-3 relative z-50 bg-slate-700 text-white"
+          class="hidden flex flex-col items-center justify-center text-center p-3 relative z-50 bg-slate-700 text-gray-300"
         ></span>
         <div id="gameArea" class="bg-sky-400 mx-auto w-full h-screen"></div>
       </div>
