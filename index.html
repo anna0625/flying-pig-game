@@ -62,6 +62,35 @@
     </style>
   </head>
 
+  <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box relative bg-slate-700">
+      <label
+        for="my-modal-3"
+        class="btn btn-sm btn-circle absolute right-2 top-2"
+        >✕</label
+      >
+      <h3 class="text-lg font-bold">Instruction</h3>
+      <p class="py-4">Once the game starts, the pig will be moving.</p>
+      <p class="py-4">
+        Game over: <br />
+        when the pig falls outside the screen area. <br />
+        when the pig hits obstacles. <br />
+      </p>
+      <p class="py-4">
+        Desktop : <br />
+        use UP and SPACE keys to jump up. <br />
+        use RIGHT key to move forward faster.<br />
+        use LEFT key to lower speed. <br />
+        use DOWN key to jump down.
+      </p>
+      <p class="py-4">
+        Mobile : <br />
+        touch screen to jump up.
+      </p>
+    </div>
+  </div>
+
   <body id="body">
     <div class="container mx-auto min-w-full fixed smooth">
       <div
@@ -91,34 +120,6 @@
             />
           </svg>
         </label>
-        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-        <div class="modal">
-          <div class="modal-box relative bg-slate-700">
-            <label
-              for="my-modal-3"
-              class="btn btn-sm btn-circle absolute right-2 top-2"
-              >✕</label
-            >
-            <h3 class="text-lg font-bold">Instruction</h3>
-            <p class="py-4">Once the game starts, the pig will be moving.</p>
-            <p class="py-4">
-              Game over: <br />
-              when the pig falls outside the screen area. <br />
-              when the pig hits obstacles. <br />
-            </p>
-            <p class="py-4">
-              Desktop : <br />
-              use UP and SPACE keys to jump up. <br />
-              use RIGHT key to move forward faster.<br />
-              use LEFT key to lower speed. <br />
-              use DOWN key to jump down.
-            </p>
-            <p class="py-4">
-              Mobile : <br />
-              touch screen to jump up.
-            </p>
-          </div>
-        </div>
       </div>
       <div id="game">
         <button
