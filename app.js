@@ -30,19 +30,19 @@ let player = {};
 let highestScore = 0;
 
 // Mobile
-document.addEventListener("ontouchstart", (e) => {
+addEventListener("ontouchstart", (e) => {
   e.stopPropagation();
   keys.ArrowUp = true;
 });
-document.addEventListener("ontouchend", (e) => {
+addEventListener("ontouchend", (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 });
-document.addEventListener("ontouchcancel", (e) => {
+addEventListener("ontouchcancel", (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 });
-document.addEventListener("ontouchmove", (e) => {
+addEventListener("ontouchmove", (e) => {
   e.stopPropagation();
   keys.ArrowUp = false;
 });
