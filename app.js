@@ -87,21 +87,19 @@ function start() {
   window.requestAnimationFrame(playGame);
 }
 
-function randomChoose() {
+function randomChoose(selection1, selection2) {
   const number = Math.round(Math.random() * 1000);
   // console.log(number);
   if (number % 7 === 0 || number % 9 === 0) {
-    return "triangle1";
+    return `${selection1}`;
   } else {
-    return "triangle2";
+    return `${selection2}`;
   }
 }
 
 function buildObstacles(startPosition) {
   let totalScreenHeight = gameArea.offsetHeight;
   let totalScreenWidth = gameArea.offsetWidth;
-  const triangleResult = randomChoose();
-  console.log(triangleResult);
   player.pipe++;
   let pipeTop = document.createElement("div");
   pipeTop.start = startPosition + totalScreenWidth;
@@ -128,31 +126,30 @@ function buildObstacles(startPosition) {
   pipeBottom.id = player.pipe;
   pipeBottom.classList.add("bg-lime-100");
   gameArea.appendChild(pipeBottom);
-  if (triangleResult === "triangle1") {
-    let triangle = document.createElement("span");
-    triangle.start = pipeTop.start;
-    // triangle.classList.add("pipe::before");
-    triangle.classList.add("triangle1");
-    triangle.style.top = -250 + "px";
-    triangle.x = pipeTop.start;
-    triangle.id = player.pipe;
-    pipeBottom.appendChild(triangle);
+  const circleResult = randomChoose("circle1", "circle2");
+  if (circleResult === "circle1") {
+    let circle = document.createElement("span");
+    circle.start = pipeTop.start;
+    circle.classList.add("circle1");
+    circle.style.top = -300 + "px";
+    circle.x = pipeTop.start;
+    circle.id = player.pipe;
+    pipeBottom.appendChild(circle);
   } else {
-    let triangle = document.createElement("span");
-    triangle.start = pipeTop.start;
-    // triangle.classList.add("pipe::before");
-    triangle.classList.add("triangle2");
-    triangle.style.top = -250 + "px";
-    triangle.x = pipeTop.start;
-    triangle.id = player.pipe;
-    pipeBottom.appendChild(triangle);
+    let circle = document.createElement("span");
+    circle.start = pipeTop.start;
+    circle.classList.add("circle2");
+    circle.style.top = -300 + "px";
+    circle.x = pipeTop.start;
+    circle.id = player.pipe;
+    pipeBottom.appendChild(circle);
   }
 }
 
 function moveObstacles(pig) {
   let pipes = document.querySelectorAll(".pipe");
-  let triangle1 = document.querySelector(".triangle1");
-  let triangle2 = document.querySelector(".triangle2");
+  let circle1 = document.querySelector(".circle1");
+  let circle2 = document.querySelector(".circle2");
   const incentive = document.getElementById("incentive");
   let removeCounter = 0; // how many pipes have been removed
   pipes.forEach((pipe) => {
@@ -170,12 +167,12 @@ function moveObstacles(pig) {
       playGameOver(pig);
     }
 
-    if (triangle1 && isCollide(triangle1, pig)) {
+    if (circle1 && isCollide(circle1, pig)) {
       playGameOver(pig);
     }
-    if (triangle2 && isCollide(triangle2, pig)) {
-      triangle2.classList.add("scale-150");
-      player.score = player.score + 10;
+    if (circle2 && isCollide(circle2, pig)) {
+      circle2.classList.add("scale-150");
+      player.score++;
 
       incentive.classList.remove("hidden");
       incentive.innerText = "+ 100 ";
@@ -194,17 +191,17 @@ function moveObstacles(pig) {
   }
 }
 
-function isCollide(pipe, pig) {
-  let pipeRect = pipe.getBoundingClientRect();
-  let pigRect = pig.getBoundingClientRect();
+function isCollide(object1, object2) {
+  let object1Rect = object1.getBoundingClientRect();
+  let object2Rect = object2.getBoundingClientRect();
   //console.log(pipeRect);
   //console.log(pigRect);
 
   return !(
-    pipeRect.bottom < pigRect.top ||
-    pipeRect.top > pigRect.bottom ||
-    pipeRect.right < pigRect.left ||
-    pipeRect.left > pigRect.right
+    object1Rect.bottom < object2Rect.top ||
+    object1Rect.top > object2Rect.bottom ||
+    object1Rect.right < object2Rect.left ||
+    object1Rect.left > object2Rect.right
   );
 }
 

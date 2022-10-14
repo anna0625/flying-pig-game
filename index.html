@@ -54,7 +54,7 @@
         z-index: 100;
       }
       .pipe {
-        @apply shadow-sm rounded-md;
+        @apply shadow-sm rounded-md animate-bounce;
         width: 70px;
         position: absolute;
         text-align: center;
@@ -66,22 +66,22 @@
         top: 150px;
         @apply flex items-center;
       }
-      .triangle1 {
-        position: absolute;
-        top: -170px;
-        @apply flex items-center;
-        border-left: 25px solid transparent;
-        border-right: 25px solid transparent;
-        border-bottom: 50px solid rgb(226, 152, 48);
-      }
-
-      .triangle2 {
+      .circle1 {
         position: absolute;
         top: 200px;
-        @apply flex items-center;
-        border-left: 40px solid transparent;
+        @apply flex items-center bg-slate-500 h-6 w-6 shadow-md;
+        /*border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid rgb(226, 152, 48);*/
+      }
+
+      .circle2 {
+        position: absolute;
+        top: 200px;
+        @apply flex items-center bg-slate-200 h-36 w-36 rounded-full shadow-sm;
+        /*border-left: 40px solid transparent;
         border-right: 40px solid transparent;
-        border-bottom: 80px solid rgba(226, 152, 48, 0.335);
+        border-bottom: 80px solid rgba(226, 152, 48, 0.335);*/
       }
       .z-index {
         z-index: 100;
