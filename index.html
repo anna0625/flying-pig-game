@@ -40,7 +40,7 @@
         font-size: 1.5rem;
         background-image: url(pig.png);
         background-size: cover;
-        z-index: 99;
+        z-index: 10;
       }
       .tail {
         @apply shadow-sm;
@@ -51,10 +51,10 @@
         width: 10px;
         height: 5px;
         border-radius: 5px;
-        z-index: 100;
+        z-index: 11;
       }
       .pipe {
-        @apply shadow-sm rounded-md animate-bounce;
+        @apply shadow-sm rounded-md;
         width: 70px;
         position: absolute;
         text-align: center;
@@ -69,7 +69,7 @@
       .circle1 {
         position: absolute;
         top: 200px;
-        @apply flex items-center bg-slate-500 h-6 w-6 shadow-md;
+        @apply flex items-center bg-slate-500 h-6 w-6 shadow-md animate-bounce;
         /*border-left: 25px solid transparent;
         border-right: 25px solid transparent;
         border-bottom: 50px solid rgb(226, 152, 48);*/
@@ -78,7 +78,7 @@
       .circle2 {
         position: absolute;
         top: 200px;
-        @apply flex items-center bg-slate-200 h-36 w-36 rounded-full shadow-sm;
+        @apply flex items-center bg-slate-200 h-12 w-12 rounded-full shadow-sm;
         /*border-left: 40px solid transparent;
         border-right: 40px solid transparent;
         border-bottom: 80px solid rgba(226, 152, 48, 0.335);*/
@@ -154,13 +154,13 @@
       <div id="game">
         <button
           id="startScreen"
-          class="absolute p-3 flex items-center justify-center bg-slate-500 text-white left-1/4 top-44 w-1/2 shadow-md cursor-pointer hover:scale-110 hover:bg-slate-700 z-50 rounded-md"
+          class="absolute p-3 bg-slate-500 text-white left-1/4 top-44 w-1/2 shadow-md cursor-pointer hover:scale-110 hover:bg-slate-700 z-50 rounded-md"
         >
-          Press Start
+          Are you ready ...
         </button>
         <button
           id="againButton"
-          class="hidden absolute p-3 flex items-center justify-center bg-slate-500 text-white left-1/4 top-44 w-1/2 shadow-md cursor-pointer hover:scale-110 hover:bg-slate-700 z-50 rounded-md"
+          class="hidden absolute p-3 bg-slate-500 text-white left-1/4 top-44 w-1/2 shadow-md cursor-pointer hover:scale-110 hover:bg-slate-700 z-50 rounded-md"
         >
           start again
         </button>
@@ -171,6 +171,12 @@
         <div id="gameArea" class="bg-sky-400 mx-auto w-full h-screen"></div>
       </div>
     </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+      integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="app.js"></script>
   </body>
 </html>
