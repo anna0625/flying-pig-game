@@ -10,6 +10,7 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link href="index.scss" rel="stylesheet/scss" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -39,6 +40,7 @@
         font-size: 1.5rem;
         background-image: url(pig.png);
         background-size: cover;
+        z-index: 99;
       }
       .tail {
         @apply shadow-sm;
@@ -49,12 +51,37 @@
         width: 10px;
         height: 5px;
         border-radius: 5px;
+        z-index: 100;
       }
       .pipe {
         @apply shadow-sm rounded-md;
         width: 70px;
         position: absolute;
         text-align: center;
+      }
+
+      .pipe::before {
+        content: "";
+        position: absolute;
+        top: 150px;
+        @apply flex items-center;
+      }
+      .triangle1 {
+        position: absolute;
+        top: -170px;
+        @apply flex items-center;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid rgb(226, 152, 48);
+      }
+
+      .triangle2 {
+        position: absolute;
+        top: 200px;
+        @apply flex items-center;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 80px solid rgba(226, 152, 48, 0.335);
       }
       .z-index {
         z-index: 100;
@@ -96,7 +123,10 @@
       <div
         class="bg-slate-700 text-white text-center h-16 text-lg font-mono flex items-center justify-between relative z-50"
       >
-        <p id="score" class="mx-3 text-left flex-1"></p>
+        <div class="flex-1 flex flex-row">
+          <p id="score" class="mx-3 text-left"></p>
+          <p id="incentive" class="hidden mx-3 text-left"></p>
+        </div>
         <select id="speed" class="mx-5 select w-30 md:w-fit bg-slate-600">
           <option disabled selected>Speed</option>
           <option value="slow">Slow</option>
