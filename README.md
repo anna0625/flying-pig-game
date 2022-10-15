@@ -1,3 +1,3 @@
 # flying-pig-game
 
-![playing](playing.png)
+![playing](playing-version2.png)
