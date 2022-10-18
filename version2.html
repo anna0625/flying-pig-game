@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flying Pig</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="index.scss" rel="stylesheet/scss" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {},
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      body {
+        -webkit-touch-callout: none; /* Safari */
+        -webkit-user-select: none; /* Chrome */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        -webkit-touch-callout: none; /* prevent long-press select and vibrate on iphone */
+        -webkit-user-select: none; /* prevent long-press on select and vibrate iphone */
+        user-select: none;
+        touch-action: none;
+      }
+      .pig {
+        position: absolute;
+        bottom: 16rem;
+        left: 50px;
+        width: 50px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.5rem;
+        background-image: url(pig.png);
+        background-size: cover;
+        z-index: 10;
+      }
+      .tail {
+        @apply shadow-sm;
+        position: absolute;
+        top: 16px;
+        left: -3px;
+        background-color: #ffb6b6;
+        width: 10px;
+        height: 5px;
+        border-radius: 5px;
+        z-index: 11;
+      }
+      .pipe {
+        @apply shadow-sm rounded-md;
+        width: 70px;
+        position: absolute;
+        text-align: center;
+      }
+
+      .pipe::before {
+        content: "";
+        position: absolute;
+        top: 150px;
+        @apply flex items-center;
+      }
+      .circle1 {
+        position: absolute;
+        top: 200px;
+        @apply flex items-center bg-slate-500 h-6 w-6 shadow-md animate-bounce rounded-md;
+        /*border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid rgb(226, 152, 48);*/
+      }
+
+      .circle2 {
+        position: absolute;
+        top: 200px;
+        @apply flex items-center bg-slate-200 h-12 w-12 shadow-sm rounded-md;
+        /*border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 80px solid rgba(226, 152, 48, 0.335);*/
+      }
+      .z-index {
+        z-index: 100;
+      }
+    </style>
+  </head>
+
+  <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box relative bg-slate-700">
+      <label
+        for="my-modal-3"
+        class="btn btn-sm btn-circle absolute right-2 top-2"
+        >✕</label
+      >
+      <h3 class="text-lg font-bold">Instruction</h3>
+      <p class="py-4">Once the game starts, the pig will be moving.</p>
+      <p class="py-4">
+        When the pig falls outside the screen area, game over. <br />
+        When the pig hits obstacles (long pipes on the top and bottom / black
+        small rectangles), game over. <br />
+        When the pig hits white medium rectangles sometimes, get +100!<br />
+      </p>
+      <p class="py-4">
+        Desktop : <br />
+        use UP and SPACE keys to jump up. <br />
+        use RIGHT key to move forward faster.<br />
+        use LEFT key to lower speed. <br />
+        use DOWN key to jump down.
+      </p>
+      <p class="py-4">
+        Mobile : <br />
+        touch screen to jump up.
+      </p>
+    </div>
+  </div>
+
+  <body id="body">
+    <div class="container mx-auto min-w-full fixed smooth">
+      <div
+        class="bg-slate-700 text-white text-center h-16 text-lg font-mono flex items-center justify-between relative z-50"
+      >
+        <div class="flex-1 flex flex-row">
+          <p id="score" class="mx-3 text-left"></p>
+          <p id="incentive" class="hidden mx-3 text-left"></p>
+        </div>
+        <select id="speed" class="mx-5 select w-30 md:w-fit bg-slate-600">
+          <option disabled selected>Speed</option>
+          <option value="slow">Slow</option>
+          <option value="medium">Medium</option>
+          <option value="fast">Fast</option>
+          <option value="super">Super</option>
+        </select>
+        <label for="my-modal-3" class="btn bg-slate-600 border-0 mr-3"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+            />
+          </svg>
+        </label>
+      </div>
+      <div id="game">
+        <button
+          id="startScreen"
+          class="absolute p-3 bg-slate-500 text-white left-1/4 top-44 w-1/2 shadow-md cursor-pointer hover:scale-110 hover:bg-slate-700 z-50 rounded-md"
+        >
+          Are you ready ...
+        </button>
+        <button
+          id="againButton"
+          class="hidden absolute p-3 bg-slate-500 text-white left-1/4 top-44 w-1/2 shadow-md cursor-pointer hover:scale-110 hover:bg-slate-700 z-50 rounded-md"
+        >
+          start again
+        </button>
+        <span
+          id="gameMessage"
+          class="hidden flex flex-col items-center justify-center text-center p-3 relative z-50 bg-slate-700 text-gray-300"
+        ></span>
+        <div id="gameArea" class="bg-sky-400 mx-auto w-full h-screen"></div>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+      integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
