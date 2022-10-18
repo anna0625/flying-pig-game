@@ -46,6 +46,7 @@ setTimeout(() => {
 
   // Mobile
   document.addEventListener("touchstart", (e) => {
+    e.preventDefault();
     e.stopPropagation();
     keys.ArrowUp = true;
   });
