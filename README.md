@@ -1,4 +1,4 @@
 # flying-pig-game
 
-![playing](playing-version1.png)
-![result](result-version1.png)
+![playing](playing-version2.png)
+![result](result-version2.png)
