@@ -124,10 +124,12 @@
       <div
         class="bg-slate-700 text-white text-center h-16 text-lg font-mono flex items-center justify-between relative z-50"
       >
+        <!-- Score -->
         <div class="flex-1 flex flex-row">
           <p id="score" class="mx-3 text-left"></p>
           <p id="incentive" class="hidden mx-3 text-left"></p>
         </div>
+        <!-- Speed -->
         <select id="speed" class="mx-5 select w-30 md:w-fit bg-slate-600">
           <option disabled selected>Speed</option>
           <option value="slow">Slow</option>
@@ -135,6 +137,7 @@
           <option value="fast">Fast</option>
           <option value="super">Super</option>
         </select>
+        <!-- Info -->
         <label for="my-modal-3" class="btn bg-slate-600 border-0 mr-3"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -151,6 +154,10 @@
             />
           </svg>
         </label>
+        <!-- Back Home -->
+        <button class="btn btn-priary mr-3">
+          <a href="./index.html">Home</a>
+        </button>
       </div>
       <div id="game">
         <button
