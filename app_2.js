@@ -47,20 +47,21 @@ setTimeout(() => {
   // Mobile
   document.addEventListener("touchstart", (e) => {
     e.preventDefault();
+    e.stopPropagation();
     keys.ArrowUp = true;
   });
   document.addEventListener("touchend", (e) => {
     e.stopPropagation();
     keys.ArrowUp = false;
   });
-  document.addEventListener("touchcancel", (e) => {
-    e.stopPropagation();
-    keys.ArrowUp = false;
-  });
-  document.addEventListener("touchmove", (e) => {
-    e.stopPropagation();
-    keys.ArrowUp = false;
-  });
+  // document.addEventListener("touchcancel", (e) => {
+  //   e.stopPropagation();
+  //   keys.ArrowUp = false;
+  // });
+  // document.addEventListener("touchmove", (e) => {
+  //   e.stopPropagation();
+  //   keys.ArrowUp = false;
+  // });
 
   function start() {
     player.speed = defaultSpeed;
