@@ -36,14 +36,17 @@ document.addEventListener("touchstart", (e) => {
   keys.ArrowUp = true;
 });
 document.addEventListener("touchend", (e) => {
+  e.preventDefault();
   e.stopPropagation();
   keys.ArrowUp = false;
 });
 document.addEventListener("touchcancel", (e) => {
+  e.preventDefault();
   e.stopPropagation();
   keys.ArrowUp = false;
 });
 document.addEventListener("touchmove", (e) => {
+  e.preventDefault();
   e.stopPropagation();
   keys.ArrowUp = false;
 });
