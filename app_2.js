@@ -56,12 +56,10 @@ setTimeout(() => {
     keys.ArrowUp = false;
   });
   document.addEventListener("touchcancel", (e) => {
-    e.preventDefault();
     e.stopPropagation();
     keys.ArrowUp = false;
   });
   document.addEventListener("touchmove", (e) => {
-    e.preventDefault();
     e.stopPropagation();
     keys.ArrowUp = false;
   });
